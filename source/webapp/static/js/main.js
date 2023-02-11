@@ -9,11 +9,11 @@ async function buttonClick(event) {
         let url = target.dataset['indexLink'];
         let response = await fetch(url);
         let index_text = await response.json();
+    console.log(index_text);
 
         let div = document.createElement('div');
         div.className='alert';
-        div.innerHTML= <strong>Обьявление ${index_text['data']} изменено</strong>
-    <button class='button'  onclick='onButtonClickClose()'><i class='bi bi-x-circle'></i></button>;
+        div.innerHTML= `<strong>Обьявление ${index_text['data']} изменено</strong><button class='button'  onclick='onButtonClickClose()'><i class='bi bi-x-circle'></i></button>`;
         let div2 = document.getElementById('change');
         div2.appendChild(div);
         setTimeout(onButtonClickClose, 5000);
