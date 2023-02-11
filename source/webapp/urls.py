@@ -13,8 +13,8 @@ urlpatterns = [
     path('comment/<int:pk>/delete', CommentDeleteView.as_view(), name='comment_delete'),
     path('ad/<int:pk>/comment/add/', AdCommentCreateView.as_view(), name='ad_comment_add'),
     path('no_moderated/', AdList.as_view(), name="no_moderated"),
-    path('no_moderated/', AdYes.as_view(), name="yes"),
-    path('no_moderated/', Adn.as_view(), name="no")
+    path('moderated/<int:pk>/', AdYes.as_view(), name="yes"),
+    path('no_moderated/<int:pk>/', Adn.as_view(), name="no")
 
 
 ]

@@ -101,7 +101,7 @@ class AdYes(PermissionRequiredMixin, View):
 
     def get(self, *args, **kwargs):
         ad = get_object_or_404(Ads, pk=self.kwargs.get('pk'))
-        ad.status = 'rejected'
+        ad.status = 'published'
         ad.save()
         data = {
             'data': ad.pk

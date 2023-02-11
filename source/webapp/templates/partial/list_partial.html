@@ -13,7 +13,7 @@
                   </div>
                   <div class="card-footer">
                     <small class="text-muted">Created by {{ ad.created_at }}</small> |
-{#                    <a href="{% url 'accounts:detail' request.user.pk %} ">{{ ad.author }}</a>#}
+                    <a href="{{ get_absolute_url }} ">{{ ad.author }}</a>
 
                   </div>
             </div>

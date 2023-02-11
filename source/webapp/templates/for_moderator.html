@@ -12,12 +12,12 @@
                             {% if ad.photo %}
                             <img src="{{ ad.photo.url }}" class="img-fluid rounded-start w-75">
                             {% endif %}
-                            <h5 class="card-title">Заголовок: {{ ad.title }} </h5>
-                            <p class="card-text">Автор: <a href="{% url 'accounts:detail' ad.author.pk %}">{{ ad.author }}</a></p>
+                            <h5 class="card-title">{{ ad.title }} </h5>
+                             <a href="{% url 'accounts:detail' request.user.pk %} ">Author: {{ ad.author }}</a>
                             <p class="card-text">Цена: {{ ad.price }}</p>
                             <a href="{{ ad.get_absolute_url }}" class="btn btn-primary">Подробнее...</a>
-                            <button id="button" class="btn btn-primary" data-index-link="{% url 'webapp:yes' ad.pk %}">Одобрить</button>
-                            <button id="button" class="btn btn-primary" data-index-link="{% url 'webapp:no' ad.pk %}">Отклонить</button>
+                            <button id="button" class="btn btn-success" data-index-link="{% url 'webapp:yes' ad.pk %}">Одобрить</button>
+                            <button id="button" class="btn btn-danger" data-index-link="{% url 'webapp:no' ad.pk %}">Отклонить</button>
                         </div>
                     </div>
                 </div>
