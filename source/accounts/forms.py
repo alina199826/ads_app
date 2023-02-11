@@ -1,7 +1,6 @@
 from django import forms
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm
-from phonenumber_field.widgets import PhoneNumberPrefixWidget
 from accounts.models import Profile
 
 
@@ -21,8 +20,5 @@ class ProfileChangeForm(forms.ModelForm):
         model = Profile
         fields = ['phone']
 
-        # widgets = {
-        #     'phone': PhoneNumberPrefixWidget(initial='US'),
-        #
-        # }
+
 

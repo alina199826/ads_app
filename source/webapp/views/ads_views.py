@@ -1,12 +1,11 @@
 from django.contrib.auth.mixins import PermissionRequiredMixin, LoginRequiredMixin
-from django.http import JsonResponse
 from django.utils.http import urlencode
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.db.models import Q
 from django.views.generic import ListView, DetailView, DeleteView, CreateView, UpdateView
 
-from webapp.models import Ads, Comment
+from webapp.models import Ads
 from webapp.forms import AdForm, SimpleSearchForm
 
 
