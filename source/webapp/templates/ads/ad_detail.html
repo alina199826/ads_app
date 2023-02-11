@@ -2,34 +2,41 @@
 
 {% block nav %}
 
-{#    {% if request.user.is_authenticated %}#}
-{##}
-{#        {% if perms.webapp.change_ad or ad.author == request.user %}#}
-{#            <li class="nav-item">#}
-{#                <a class="nav-link" href="{% url 'webapp:ad_update' ad.pk %}">Update</a>#}
-{#            </li>#}
-{#        {% endif %}#}
-{#        {% if perms.webapp.delete_ad  or ad.author == request.user %}#}
-{#            <li class="nav-item">#}
-{#                <a class="nav-link" href="{% url 'webapp:ad_delete' ad.pk %}">Delete</a>#}
-{#            </li>#}
-{#        {% endif %}#}
-{#        #}
-{#    {% endif %}#}
+    {% if request.user.is_authenticated %}
+
+        {% if perms.webapp.change_ad or ads.author == request.user %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'webapp:ad_update' ads.pk %}">Update</a>
+            </li>
+        {% endif %}
+        {% if perms.webapp.delete_ad  or ads.author == request.user %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'webapp:ad_delete' ads.pk %}">Delete</a>
+            </li>
+        {% endif %}
+        {% if perms.webapp.add or ads.author != request.user %}
+         <li class="nav-item">
+            <a class="nav-link" href="{% url 'webapp:ad_comment_add' ads.pk %}">Add Comment</a>
+        </li>
+         {% endif %}
+
+    {% endif %}
 
 {% endblock %}
    {% block content %}
         <div class="row row-cols-3 row-cols-md-2 g-4 container my-2">
           <div class="col">
             <div class="card">
-                {% if ad.photo %}
+                {% if ads.photo %}
               <img src="{{ ads.photo.url }}" class="card-img-top" alt="...">
                 {% endif %}
               <div class="card-body">
                 <h5 class="card-title">{{ ads.text }}</h5>
-                <p class="card-text">{{ ads.author }}</p>
+                <p class="card-text">{{ ads.description }}</p>
+                   <a href="{% url 'accounts:detail' request.user.pk %} ">Author: {{ ads.author }}</a>
             <div class="card-footer">
               <small class="text-muted">{{ ads.created_at }}</small>
+              <small class="text-muted">категория: {{ ads.category }}</small>
             </div>
 
               </div>

@@ -5,6 +5,7 @@
 
 {% endblock %}
    {% block content %}
+           {% include 'partial/simple_search.html' %}
     {% include 'partial/list_partial.html' %}
      {% if is_paginated %}
         {% include 'partial/pagination.html' %}

@@ -22,6 +22,9 @@ class Ads(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="Время создания")
     updated_at = models.DateTimeField(auto_now=True, verbose_name="Время изменения")
 
+    class Meta:
+        permissions = [("choice_ads", "Отбирать объявления")]
+
     def get_absolute_url(self):
         return reverse('webapp:ad_view', kwargs={'pk': self.pk})
 

@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block nav %}
+    {% if user_obj.pk == request.user.pk %}
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'accounts:change' %}">Редактировать </a>
+    </li>
+
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    <h1>Личная страница пользователя {{ user_obj.get_full_name|default:user_obj.username }}</h1>
+
+    <div class="card mb-3">
+        <div class="row g-0">
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">Имя пользователя: {{ user_obj.username }}</h5>
+                    <p class="card-text">Имя: {{ user_obj.first_name }}</p>
+                    <p class="card-text">Фамилия: {{ user_obj.last_name }}</p>
+{#                    <p class="card-text">Телефон {{ user_obj.profile.phone :  }}</p>#}
+                    <p class="card-text">Почта: {{ user_obj.email }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% include 'partial/list_partial.html' with ads=object_list %}
+{% endblock %}
+
+
+
+

@@ -1,0 +1,87 @@
+[
+{
+    "model": "webapp.ads",
+    "pk": 1,
+    "fields": {
+        "photo": "photos/Avatarki-dlja-Vatsapa-dlja-muzhchin-25.jpg",
+        "text": "продаю льва",
+        "description": "из африки",
+        "author": 1,
+        "category": 1,
+        "price": "5000.00",
+        "status": "to_modern",
+        "created_at": "2023-02-11T07:14:02.346Z",
+        "updated_at": "2023-02-11T07:14:02.346Z"
+    }
+},
+{
+    "model": "webapp.ads",
+    "pk": 2,
+    "fields": {
+        "photo": "photos/1645984815_1-kartinkin-net-p-volk-odinochka-kartinki-1.jpg",
+        "text": "продаю волка",
+        "description": "молодого-породистого",
+        "author": 1,
+        "category": 1,
+        "price": "3000.00",
+        "status": "to_modern",
+        "created_at": "2023-02-11T07:28:47.240Z",
+        "updated_at": "2023-02-11T07:37:24.330Z"
+    }
+},
+{
+    "model": "webapp.ads",
+    "pk": 4,
+    "fields": {
+        "photo": "photos/169049-1.jpg",
+        "text": "black",
+        "description": "продаю пантеру",
+        "author": 2,
+        "category": 1,
+        "price": "2000.00",
+        "status": "to_modern",
+        "created_at": "2023-02-11T09:59:43.284Z",
+        "updated_at": "2023-02-11T09:59:43.285Z"
+    }
+},
+{
+    "model": "webapp.ads",
+    "pk": 5,
+    "fields": {
+        "photo": "photos/8adefe5af862b4f9cec286c6ee4722cb.jpg",
+        "text": "bear",
+        "description": "text",
+        "author": 1,
+        "category": 1,
+        "price": "100.00",
+        "status": "published",
+        "created_at": "2023-02-11T12:09:05.577Z",
+        "updated_at": "2023-02-11T12:09:05.577Z"
+    }
+},
+{
+    "model": "webapp.category",
+    "pk": 1,
+    "fields": {
+        "name": "animal"
+    }
+},
+{
+    "model": "webapp.comment",
+    "pk": 1,
+    "fields": {
+        "text": "хорош",
+        "author": 1,
+        "created_at": "2023-02-11T08:16:18.841Z",
+        "ad": 1
+    }
+},
+{
+    "model": "accounts.profile",
+    "pk": 1,
+    "fields": {
+        "user": 2,
+        "phone": ""
+    }
+}
+]

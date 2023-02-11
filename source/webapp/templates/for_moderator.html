@@ -13,7 +13,10 @@
                   </div>
                   <div class="card-footer">
                     <small class="text-muted">Created by {{ ad.created_at }}</small> |
-                    <a href="{% url 'accounts:detail' request.user.pk %} ">{{ ad.author }}</a>
+{#                    <a href="{% url 'accounts:detail' request.user.pk %} ">{{ ad.author }}</a>#}
+{#                     <small class="text-muted">Author <a href="{% url 'accounts:detail' request.user.pk %} ">{{ ad.author }}</a></small>#}
+                    <a href="{% url 'webapp:comment_update' comment.pk %}"  data-link="{% url 'webapp:article_anlike' article.pk %}" class="btn btn-success px-5">Update</a>
+
 
                   </div>
             </div>

@@ -4,7 +4,7 @@ from webapp.models import Ads, Comment, Category
 
 
 class AdAdmin(admin.ModelAdmin):
-    list_display = ['id', 'photo', 'created_at', 'description', 'category', 'price', 'status']
+    list_display = ['id', 'photo', 'created_at', 'description', 'category', 'price', 'status', 'status']
     search_fields = ['text', 'description']
     readonly_fields = ['created_at', 'updated_at']
 
