@@ -21,6 +21,7 @@ class Ads(models.Model):
                                 verbose_name="статус")
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="Время создания")
     updated_at = models.DateTimeField(auto_now=True, verbose_name="Время изменения")
+    is_moderated = models.BooleanField(default=False, verbose_name='Подтвержден')
 
     class Meta:
         permissions = [("choice_ads", "Отбирать объявления")]

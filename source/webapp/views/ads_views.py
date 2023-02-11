@@ -1,8 +1,10 @@
 from django.contrib.auth.mixins import PermissionRequiredMixin, LoginRequiredMixin
+from django.http import JsonResponse
 from django.utils.http import urlencode
-from django.shortcuts import redirect
+from django.shortcuts import redirect, get_object_or_404
 from django.urls import reverse_lazy
 from django.db.models import Q
+from django.views import View
 from django.views.generic import ListView, DetailView, DeleteView, CreateView, UpdateView
 
 from webapp.models import Ads
@@ -93,26 +95,40 @@ class AdDeleteView(PermissionRequiredMixin, DeleteView):
         self.object.save()
         return redirect('webapp:index')
 
-# class LikeView(PermissionRequiredMixin View):
-#     def post(self, request, *args, **kwargs):
-#         article = get_object_or_404(Article, pk=kwargs.get('pk'))
-#         if request.user in article.likes.all():
-#             response = JsonResponse({'error': 'Лайк уже поставлен'})
-#             response.status_code = 403
-#         else:
-#             article.likes.add(request.user)
-#             response = JsonResponse({"count": article.get_likes_count()})
-#
-#         return response
-#
-# class AnLikeView(LoginRequiredMixin, View):
-#     def delete(self, request, *args, **kwargs):
-#         article = get_object_or_404(Article, pk=kwargs.get('pk'))
-#         if request.user in article.likes.all():
-#             article.likes.remove(request.user)
-#             response = JsonResponse({"count": article.get_likes_count()})
-#         else:
-#             response = JsonResponse({'error': 'Лайк не был поставлен'})
-#             response.status_code = 403
-#
-#         return
+class AdYes(PermissionRequiredMixin, View):
+
+    permission_required = 'webapp.choice_ads'
+
+    def get(self, *args, **kwargs):
+        ad = get_object_or_404(Ads, pk=self.kwargs.get('pk'))
+        ad.status = 'rejected'
+        ad.save()
+        data = {
+            'data': ad.pk
+        }
+        response = JsonResponse(data)
+        return response
+
+
+class Adn(PermissionRequiredMixin, View):
+    permission_required = 'webapp.choice_ads'
+
+    def get(self, *args, **kwargs):
+        ad = get_object_or_404(Ads, pk=self.kwargs.get('pk'))
+        ad.status = 'rejected'
+        ad.save()
+        data = {
+            'data': ad.pk
+        }
+        response = JsonResponse(data)
+        return response
+
+class AdList(PermissionRequiredMixin, ListView):
+    template_name = 'for_moderator.html'
+    context_object_name = 'ads'
+    model = Ads
+    ordering = ('-created_at',)
+    paginate_by = 3
+    permission_required = 'webapp.choice_ads'
+
+
