@@ -1,0 +1,13 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+     <h1>Are you sure want to delete this photo ?</h1>
+    <form action="" method="POST">
+    {% csrf_token %}
+        <input type="submit" class="btn btn-danger" value="Confirm">
+
+        <a href="{% url 'webapp:ad_view' ad.pk %}" class="btn btn-success">Cancel</a>
+    </form>
+{% endblock %}
